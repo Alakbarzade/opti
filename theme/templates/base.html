@@ -1,0 +1,340 @@
+{% load static navigation_tags wagtailcore_tags wagtailuserbar tailwind_tags i18n wagtailmetadata_tags  %}
+{%  get_current_language as lang %}
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="{{ lang }}">
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content=""/>
+    <meta name="robots" content="noindex">
+    <title>
+        {% block title %}{% wagtail_site as current_site %}{% if current_site and current_site.site_name %}{{ current_site.site_name }} - {% endif %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}
+    </title>
+
+
+    {# Global stylesheets #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+    {% tailwind_css %}
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/vue@3"></script>
+
+
+    {% block extra_css %}
+    {# Override this in templates to add extra stylesheets #}
+    {% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}"
+      x-data="{ menu: false, language: false, langbutton: false }">
+{% wagtailuserbar %}
+<div x-show="menu" x-transition:enter="transition ease-on duration-300"
+     x-transition:enter-start="opacity-10 transform duration-500 translate-x-[10%]"
+     x-transition:enter-end="opacity-100 transform scale-300" x-transition:leave="transition ease-in duration-500"
+     x-transition:leave-start="opacity-100 transform scale-500"
+     x-transition:leave-end="opacity-10 transform duration-500 translate-x-[90%]" @click.away="menu = false"
+     class="w-full h-screen max bg-white text-txtcolor text-center z-30 absolute overflow-y-auto">
+
+
+    <ul class="mt-36 text-left font-bold text-txtcolor bg-[#fdfdfd] divide-y">
+        <li class="text-2xl py-4 "><a href="#" class="px-3">Главная</a></li>
+        <li class="text-2xl py-4 "><a href="#" class="px-3">Услуги</a></li>
+        <li class="text-2xl py-4 "><a href="#" class="px-3">Компания</a></li>
+        <li class="text-2xl py-4 "><a href="#" class="px-3">Контакты</a></li>
+        <li class="text-xl font-semibold py-4 "><a class="px-3 cursor-pointer" @click="menu = !menu">Закрыть
+        </a></li>
+
+    </ul>
+</div>
+<div class="w-full h-screen z-[2000] bg-langbar fixed cursor-close" x-show="language"
+     x-transition:enter="transition ease-on duration-500" x-transition:enter-start="opacity-0 transform scale-110"
+     x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-300"
+     x-transition:leave-start="opacity-100 transform scale-100"
+     x-transition:leave-end="opacity-0 transform scale-110" @click.away="language = false"
+     @click="language = !language">
+
+    <div class="w-full absolute bottom-0 h-[142px] bg-[#FDFDFD] group cursor-auto" @click="language = false">
+        <div class="border-language group-hover:bg-gradient-to-l group-hover:duration-700 group-hover:transition">
+        </div>
+        <div
+                class="container mx-auto grid sm:grid-cols-2 items-center h-[142px] text-center font-bold text-base md:text-2xl sm:divide-x">
+            {% if page %}
+            {% for translation in page.get_translations.live %}
+            {% get_language_info for translation.locale.language_code as lang %}
+            <a class="hover:duration-300 hover:-translate-y-2" rel="alternate" hreflang="{{ lang.code }}" href="{% pageurl translation %}">{{ lang.name_local }}</a>
+
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+<header class="bg-white bg-cover w-full">
+    <nav class="font-bold h-[110px] border-b border-[#DBDBDB]">
+        <div class="container flex mx-auto justify-between items-center">
+            <a class="sticky z-40" href="#"><img src="{% static 'src/img/logo.svg' %}"></a>
+            <ul class="text-left font-bold text-[22px] xxl:flex xl:flex hidden space-x-14">
+                {% get_site_root as site_root %}
+                {% top_menu parent=site_root calling_page=self %}
+                <li><a class="hover:text-primary transition duration-300 inline-flex items-center"
+                       href="#">Главная</a></li>
+                <li class="dropdown duration-300 group transition ease-in"><a
+                        class="hover:text-primary transition duration-300 inline-flex items-center" href="#">Услуги
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 mt-1" viewBox="0 0 20 20"
+                         fill="currentColor">
+                        <path fill-rule="evenodd"
+                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                </a>
+
+
+                    <ul
+                            class="dropdown-content duration-300 group transition ease-in absolute w-64 bg-menu rounded-lg shadow-xl group  py-4 border-[1px] border-gray-400">
+                        <a href="#"
+                           class="block px-4 py-2 text-sm font-bold text-gray-300 text-gray-700 hover:bg-secondary hover:text-white hover:transition hover:duration-300">
+                            Железнодорожные контейнерные перевозки
+
+                        </a>
+                        <a href="#"
+                           class="block px-4 py-2 text-sm font-bold text-gray-300 text-gray-700 hover:bg-secondary hover:text-white hover:transition hover:duration-300">
+                            Железнодорожные контейнерные перевозки </a>
+                        <a href="#"
+                           class="block px-4 py-2 text-sm font-bold text-gray-300 text-gray-700 hover:bg-secondary hover:text-white hover:transition hover:duration-300">
+                            Железнодорожные контейнерные перевозки </a>
+                        <a href="#"
+                           class="block px-4 py-2 text-sm font-bold text-gray-300 text-gray-700 hover:bg-secondary hover:text-white hover:transition hover:duration-300">
+                            Железнодорожные контейнерные перевозки
+                        </a>
+                        <a href="#"
+                           class="block px-4 py-2 text-sm font-bold text-gray-300 text-gray-700 hover:bg-secondary hover:text-white hover:transition hover:duration-300">
+                            Железнодорожные контейнерные перевозки </a>
+                        <a href="#"
+                           class="block px-4 py-2 text-sm font-bold text-gray-300 text-gray-700 hover:bg-secondary hover:text-white hover:transition hover:duration-300">
+                            Железнодорожные контейнерные перевозки </a>
+                    </ul>
+                </li>
+
+                <li><a class="hover:text-primary transition duration-300 inline-flex items-center"
+                       href="#">Компания</a></li>
+                <li><a class="hover:text-primary transition duration-300 inline-flex items-center"
+                       href="#">Контакты</a></li>
+            </ul>
+            <div class="text-left font-bold text-[20px] inline-flex items-center text-txtcolor hover:text-primary transition duration-300 cursor-pointer md:lg:ml-[550px] lg:ml-[600px] xl:ml-0"
+                 @click="language = !language">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 pr-1" viewBox="0 0 20 20"
+                     fill="currentColor">
+                    <path fill-rule="evenodd"
+                          d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.724 1.447a1 1 0 11-1.788-.894l.99-1.98.019-.038 2.99-5.982A1 1 0 0113 8zm-1.382 6h2.764L13 11.236 11.618 14z"
+                          clip-rule="evenodd"/>
+                </svg>
+       {% if lang.title == "En" %}
+                English
+       {% elif lang.title == "Ru" %}
+                Русский
+       {% else%}
+                Azərbaycanca
+       {% endif %}
+            </div>
+            <div class="md:inline-flex xxl:hidden xl:hidden lg:block sm:block xs:block z-50">
+                <template x-if="!menu">
+                    <div @click="menu = !menu" class="flex z-50 cursor-pointer">
+                        <svg class="h-8 w-8 z-50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path x-show.transition.duration.300ms="!menu" stroke-linecap="round"
+                                  stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>
+
+                        </svg>
+                    </div>
+                </template>
+                <template x-if="menu">
+                    <div class="flex z-60 text-center cursor-pointer" @click="menu = !menu">
+                        <svg class="h-8 w-8 z-50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+
+                            <path x-show.transition.duration.300ms="menu" class="fixed" stroke-linecap="round"
+                                  stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </div>
+                </template>
+
+            </div>
+        </div>
+    </nav>
+
+
+</header>
+{% block content %}
+
+
+{% endblock %}
+
+<footer class="bg-[#FEFEFE] w-full">
+    <div class="z-0 container mx-auto pb-10 px-2">
+        <svg class="w-[226px] h-[226px] absolute z-10 left-0 sm:block hidden" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <path
+                    d="M113 226C50.6905 226 0 175.31 0 113C0 50.6905 50.6905 0 113 0C175.309 0 226 50.6905 226 113C225.988 175.31 175.298 226 113 226ZM113 3.79762C52.7857 3.79762 3.79762 52.7857 3.79762 113C3.79762 173.214 52.7857 222.202 113 222.202C173.214 222.202 222.202 173.214 222.202 113C222.202 52.7857 173.214 3.79762 113 3.79762Z"
+                    fill="#F6F6F6"/>
+            <path
+                    d="M113 213.655C57.5 213.655 12.3452 168.5 12.3452 113C12.3452 57.5005 57.5 12.3457 113 12.3457C168.5 12.3457 213.655 57.5005 213.655 113C213.643 168.5 168.488 213.655 113 213.655ZM113 16.1433C59.5952 16.1433 16.1428 59.5957 16.1428 113C16.1428 166.405 59.5952 209.858 113 209.858C166.405 209.858 209.857 166.405 209.857 113C209.857 59.5957 166.405 16.1433 113 16.1433Z"
+                    fill="#F6F6F6"/>
+            <path
+                    d="M113 201.309C64.3094 201.309 24.6904 161.69 24.6904 113C24.6904 64.3095 64.3094 24.6904 113 24.6904C161.69 24.6904 201.309 64.3095 201.309 113C201.298 161.69 161.69 201.309 113 201.309ZM113 28.4881C66.3928 28.4881 28.488 66.4047 28.488 113C28.488 159.607 66.4047 197.512 113 197.512C159.595 197.512 197.512 159.595 197.512 113C197.512 66.4047 159.595 28.4881 113 28.4881Z"
+                    fill="#F6F6F6"/>
+            <path
+                    d="M113 188.964C71.119 188.964 37.0356 154.893 37.0356 113C37.0356 71.119 71.1071 37.0356 113 37.0356C154.881 37.0356 188.964 71.1071 188.964 113C188.952 154.893 154.881 188.964 113 188.964ZM113 40.8333C73.2023 40.8333 40.8333 73.2142 40.8333 113C40.8333 152.798 73.2142 185.167 113 185.167C152.786 185.167 185.167 152.786 185.167 113C185.167 73.2142 152.786 40.8333 113 40.8333Z"
+                    fill="#F6F6F6"/>
+            <path
+                    d="M113 176.619C77.9166 176.619 49.3809 148.083 49.3809 113C49.3809 77.9166 77.9166 49.3809 113 49.3809C148.083 49.3809 176.619 77.9166 176.619 113C176.607 148.083 148.071 176.619 113 176.619ZM113 53.1785C80.0118 53.1785 53.1785 80.0118 53.1785 113C53.1785 145.988 80.0118 172.833 113 172.833C145.988 172.833 172.821 146 172.821 113C172.821 80.0118 145.988 53.1785 113 53.1785Z"
+                    fill="#F6F6F6"/>
+            <path
+                    d="M113 164.274C84.7262 164.274 61.7263 141.274 61.7263 113C61.7263 84.7266 84.7262 61.7266 113 61.7266C141.274 61.7266 164.274 84.7266 164.274 113C164.274 141.274 141.262 164.274 113 164.274ZM113 65.5242C86.8215 65.5242 65.512 86.8218 65.512 113.012C65.512 139.191 86.8096 160.5 113 160.5C139.191 160.5 160.488 139.203 160.488 113.012C160.476 86.8218 139.179 65.5242 113 65.5242Z"
+                    fill="#F6F6F6"/>
+        </svg>
+        <svg class="w-[473px] h-[472px] absolute z-10 right-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                    d="M236.335 472.67C106.017 472.67 0 366.653 0 236.335C0 106.017 106.017 0 236.335 0C366.653 0 472.67 106.017 472.67 236.335C472.64 366.653 366.624 472.67 236.335 472.67ZM236.335 2.986C107.643 2.986 2.9564 107.672 2.9564 236.365C2.9564 365.057 107.643 469.743 236.335 469.743C365.027 469.743 469.714 365.057 469.714 236.365C469.714 107.672 364.998 2.986 236.335 2.986Z"
+                    fill="#F7F7F7"/>
+            <path
+                    d="M236.335 449.847C118.611 449.847 22.8234 354.059 22.8234 236.335C22.8234 118.611 118.611 22.8237 236.335 22.8237C354.059 22.8237 449.846 118.611 449.846 236.335C449.846 354.089 354.059 449.847 236.335 449.847ZM236.335 28.7661C121.863 28.7661 28.7362 121.893 28.7362 236.365C28.7362 350.837 121.863 443.964 236.335 443.964C350.807 443.964 443.934 350.837 443.934 236.365C443.934 121.893 350.807 28.7661 236.335 28.7661Z"
+                    fill="#F7F7F7"/>
+            <path
+                    d="M236.335 390.571C151.309 390.571 82.129 321.391 82.129 236.365C82.129 151.339 151.309 82.1587 236.335 82.1587C321.361 82.1587 390.541 151.339 390.541 236.365C390.541 321.391 321.361 390.571 236.335 390.571ZM236.335 88.042C154.561 88.042 88.0418 154.561 88.0418 236.335C88.0418 318.109 154.561 384.628 236.335 384.628C318.109 384.628 384.628 318.109 384.628 236.335C384.628 154.591 318.109 88.042 236.335 88.042Z"
+                    fill="#F7F7F7"/>
+            <path
+                    d="M236.335 364.052C165.913 364.052 108.618 306.757 108.618 236.335C108.618 165.914 165.913 108.619 236.335 108.619C306.757 108.619 364.051 165.914 364.051 236.335C364.051 306.786 306.757 364.052 236.335 364.052ZM236.335 111.575C167.539 111.575 111.575 167.54 111.575 236.335C111.575 305.131 167.539 361.096 236.335 361.096C305.131 361.096 361.095 305.131 361.095 236.335C361.095 167.569 305.131 111.575 236.335 111.575Z"
+                    fill="#F7F7F7"/>
+            <path
+                    d="M236.335 315.803C192.521 315.803 156.896 280.179 156.896 236.365C156.896 192.551 192.521 156.926 236.335 156.926C280.149 156.926 315.774 192.551 315.774 236.365C315.774 280.149 280.119 315.803 236.335 315.803ZM236.335 162.81C195.803 162.81 162.809 195.803 162.809 236.335C162.809 276.868 195.803 309.861 236.335 309.861C276.867 309.861 309.861 276.868 309.861 236.335C309.861 195.803 276.867 162.81 236.335 162.81Z"
+                    fill="#F7F7F7"/>
+            <path
+                    d="M236.335 275.832C214.576 275.832 196.867 258.123 196.867 236.364C196.867 214.605 214.576 196.866 236.335 196.866C258.094 196.866 275.833 214.575 275.833 236.364C275.803 258.123 258.094 275.832 236.335 275.832ZM236.335 199.823C216.202 199.823 199.823 216.201 199.823 236.364C199.823 256.526 216.202 272.875 236.335 272.875C256.468 272.875 272.876 256.497 272.876 236.364C272.876 216.231 256.468 199.823 236.335 199.823Z"
+                    fill="#F7F7F7"/>
+        </svg>
+        <div class="z-30 sticky mx-auto wow animate__animated animate__zoomIn">
+            <a href="#"><img class="w-[300px] text-center mx-auto" src="{% static 'src/img/logo.svg' %}"></a>
+        </div>
+        <div class="grid md:grid-cols-5 grid-cols-1 gap-4  sticky z-20 px-2 md:px-0">
+            <div class="md:col-span-2 col-span-1 wow animate__animated animate__zoomIn">
+                <p class="text-txtcolor text-[28px] lg:text-[30px] font-bold">Компания</p>
+                <p class="text-txtcolor text-[20px] mt-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed
+                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident.</p>
+            </div>
+            <div class="md:mx-auto mx-0 wow animate__animated animate__zoomIn">
+                <p class="text-txtcolor font-bold text-[28px] lg:text-[30px]">Меню</p>
+                <a href="#">
+                    <p
+                            class="text-txtcolor font-semibold text-[22px] lg:text-[24px] mt-4 hover:text-primary duration-300">
+                        Главная</p>
+                </a>
+                <a href="#">
+                    <p
+                            class="text-txtcolor font-semibold text-[22px] lg:text-[24px] mt-1 hover:text-primary duration-300">
+                        Услуги</p>
+                </a>
+                <a href="#">
+                    <p
+                            class="text-txtcolor font-semibold text-[22px] lg:text-[24px] mt-1 hover:text-primary duration-300">
+                        Компания</p>
+                </a>
+                <a href="#">
+                    <p
+                            class="text-txtcolor font-semibold text-[22px] lg:text-[24px] mt-1 hover:text-primary duration-300">
+                        Контакты</p>
+                </a>
+            </div>
+            <div class="md:col-span-2 col-span-1 md:mx-auto mx-0 sticky z-20 wow animate__animated animate__zoomIn">
+                <p class="text-txtcolor text-[28px] lg:text-[30px] font-bold  sticky 20">Компания</p>
+                <a class="inline-flex items-center" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-4" fill="currentColor">
+                        <path
+                                d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                    </svg>
+                    <p
+                            class="text-txtcolor font-semibold lg:text-[22px] text-[20px] mt-4 ml-1 hover:text-primary duration-300">
+                        +994
+                        (70) 777 - 77 - 77</p>
+                </a>
+                <a href="#">
+                    <p
+                            class="text-txtcolor font-semibold lg:text-[22px] text-[20px] mt-1 ml-6 hover:text-primary duration-300">
+                        +994
+                        (70) 777 - 77 - 77</p>
+                </a>
+                <a class="inline-flex items-center" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-4" viewBox="0 0 20 20"
+                         fill="currentColor">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                    </svg>
+                    <p
+                            class="text-txtcolor font-semibold lg:text-[22px] text-[20px] mt-4 ml-1 hover:text-primary duration-300">
+                        info@optimallogistics.group</p>
+                </a>
+                <a href="#">
+                    <p
+                            class="text-txtcolor font-semibold lg:text-[22px] text-[20px] mt-1  ml-6 hover:text-primary duration-300">
+                        office@optimallogistics.group</p>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="w-full bg-[#444444] sticky">
+        <div class="container mx-auto grid grid-cols-2 py-5 items-center px-2">
+            <div class="items-center">
+                <p class="font-extrabold font-[18px] text-white">© 2022 ООО «Optimal Logistics». Все права защищены.
+                </p>
+            </div>
+            <div class="items-center">
+
+                <p class="font-bold text-white flex items-center float-right">
+                    Created by
+
+                    <a class="bg-medium mb-[4px] transition-all duration-300 ease-in-out hover:ease-in hover:w-[140px] hover:h-[37px] w-[30px] h-[37px] ml-2 bg-no-repeat"
+                       href="https://medium.az" target="_blank"></a>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+</footer>
+
+{# Global javascript #}
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="{% static 'src/js/wow.min.js' %}"></script>
+
+<script>
+    new WOW().init();
+</script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        effect: "cards",
+        grabCursor: true,
+    });
+</script>
+
+{% block extra_js %}
+{# Override this in templates to add extra javascript #}
+{% endblock %}
+</body>
+</html>

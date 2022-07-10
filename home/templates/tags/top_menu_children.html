@@ -1,0 +1,15 @@
+{% load i18n navigation_tags wagtailcore_tags %}
+
+
+{% for child in menuitems_children %}
+<ul
+        class="dropdown-content duration-300 group transition ease-in absolute w-64 bg-menu rounded-lg shadow-xl group  py-4 border-[1px] border-gray-400">
+    <a href="{% pageurl child.localized %}"
+       class="block px-4 py-2 text-sm font-bold text-gray-300 text-gray-700 hover:bg-secondary hover:text-white hover:transition hover:duration-300">
+        {{ child.localized.title }}
+
+    </a>
+
+
+</ul>
+{% endfor %}

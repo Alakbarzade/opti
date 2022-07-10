@@ -1,0 +1,19 @@
+{% load i18n wagtailcore_tags %}
+
+{% if ancestors %}
+ <div
+                    class="hidden md:flex px-2 float-left font-bold text-white md:text-[24px] xl:text-[28px] space-x-2 absolute top-[540px] wow animate__animated animate__backInLeft">
+
+          {% for ancestor in ancestors %}
+          {% if forloop.last %}
+          <span aria-current="page" class="font-semibold">{{ ancestor }}</span>
+          {% else %}
+          <span><a href="{% pageurl ancestor %}">{% if forloop.first %}{% trans "Əsas" %}{% else %}{{ ancestor }}{% endif %}</a></span> &nbsp/
+          {% endif %}
+          {% endfor %}
+
+</div>
+{% endif %}
+
+
+

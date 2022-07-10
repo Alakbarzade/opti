@@ -1,0 +1,33 @@
+{% load i18n navigation_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+
+
+
+
+
+
+ <li class="duration-300 group transition ease-in"><a
+         class="hover:text-primary transition duration-300 inline-flex items-center" href="/{% trans 'en' %}" rel="">
+     {% trans 'Əsas' %}
+ </a></li>
+             {% for menuitem in menuitems %}
+                <li class=" {% if menuitem.show_dropdown %} dropdown{% endif %} duration-300 group transition ease-in"><a
+                        class="hover:text-primary transition duration-300 inline-flex items-center {% if menuitem.active %}text-primary{% endif %}" href="{% pageurl menuitem.localized %}" rel="{{ menuitem.title|lower|cut:" " }}">
+                       {{ menuitem.localized.title }}
+                   {% if menuitem.show_dropdown %} <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 mt-1" viewBox="0 0 20 20"
+                         fill="currentColor">
+                        <path fill-rule="evenodd"
+                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clip-rule="evenodd"/>
+                    </svg>{% endif %}
+                </a>
+
+ {% if menuitem.show_dropdown %}
+                     {% top_menu_children parent=menuitem %}
+
+                      {% endif %}
+                </li>
+{% endfor %}
+
+

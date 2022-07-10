@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static navigation_tags tailwind_tags wagtailcore_tags %}
+
+{% block body_class %}font-Nunito overflow-x-hidden text-txtcolor{% endblock %}
+
+{% block extra_css %}
+
+{% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+
+{% endblock extra_css %}
+
+{% block content %}
+
+
+
+
+
+
+  <div class="bg-flexbg bg-cover bg-no-repeat h-[600px] w-full">
+        <div class="backdrop-opacity-10 backdrop-invert bg-black/50 w-full h-[600px]">
+            <img class="absolute right-0 lg:top-[246px] top-[288px] lg:w-[338px] w-[290px] z-10"
+                src="{% static 'src/img/abstract.svg' %}">
+            <img class="absolute right-4 lg:top-[246px] top-[300px] z-20 lg:w-[464px] w-[275px] wow animate__animated animate__backInRight"
+                src="{% static 'src/img/cubes.png' %}">
+            <div class="container mx-auto my-auto">
+                <div class="text-center items-center mx-auto pt-[140px] md:pt-[170px]">
+                    <h3 class="font-extrabold text-[30px] xl:text-[38px] text-white mt-1">Title</h3>
+                    <svg class="w-[30px] h-[30px] mx-auto animate-spin-slow" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.9999 0C23.2843 0 30 6.61894 30 14.7837C30 15.1218 29.9874 15.457 29.9649 15.7895C25.8364 13.9605 20.6425 12.8705 14.9999 12.8705C9.35747 12.8705 4.16362 13.9605 0.0351393 15.7895C0.0126418 15.457 0 15.1218 0 14.7837C0 6.61894 6.71568 0 14.9999 0Z"
+                            fill="#85BCFB" />
+                        <path
+                            d="M30 16.2229C29.3955 23.9311 22.9083 30 14.9918 30C9.70398 30 5.05429 27.2917 2.36841 23.1964C6.47961 18.7892 14.5969 15.7894 23.9394 15.7894C26.0315 15.7894 28.062 15.9399 30 16.2229Z"
+                            fill="#85BCFB" />
+                    </svg>
+                </div>
+
+{% block breadcrumbs %}
+    {# breadcrumbs is defined in base/templatetags/navigation_tags.py #}
+    {% breadcrumbs %}
+{% endblock breadcrumbs %}
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <section class="pt-[90px] pb-[90px] container mx-auto px-2">
+        Some text
+
+    </section>
+
+
+{% endblock content %}

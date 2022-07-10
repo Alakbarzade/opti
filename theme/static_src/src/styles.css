@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+
+    a {
+        @apply hover:text-primary transition duration-300
+    }
+
+    section {
+        @apply mt-20
+    }
+}
+
+@layer components {
+
+    .team {
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    .bg-about {
+
+        @apply bg-cargo;
+
+    }
+
+    .swiper-cards .swiper-slide {
+        @apply visible
+    }
+
+    .swiper {
+        @apply md:w-[400px] md:h-[420px] w-[270px] h-[340px];
+    }
+
+    .swiper-slide {
+        @apply bg-[#fff] rounded-[18px] md:text-[22px] text-[20px] font-bold text-[#000] relative z-[1];
+    }
+
+
+    .swiper-slide-active {
+        @apply shadow-2xl;
+    }
+
+    .img {
+        @apply md:w-[200px] md:h-[200px] w-[180px] h-[180px] border-[5px] border-solid border-[#fdfdfd] shadow-xl rounded-[50%] absolute top-[30%] left-[50%] z-[40] bg-cover bg-center bg-no-repeat;
+
+        transform: translate(-50%, -50%);
+    }
+
+
+    .name {
+        @apply md:pt-[260px] pt-[200px] text-center font-bold text-[28px] text-txtcolor;
+
+    }
+
+    .title {
+        @apply text-center text-[18px] text-[#DA80AE] font-medium;
+
+    }
+
+    .desc {
+        @apply text-[#6E6E6E] text-center text-[20px] font-light py-[10px] px-[20px];
+
+    }
+
+    .link {
+
+        @apply block text-center text-[16px] font-light;
+
+    }
+
+
+    .img-1 {
+        background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
+    }
+
+    .img-2 {
+        background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80')
+    }
+
+    .img-3 {
+        background-image: url('https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
+    }
+
+    .img-4 {
+        background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80')
+    }
+
+    .img-5 {
+        background-image: url('https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cG9ydHJhaXR8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60');
+    }
+
+    .dropdown {
+        @apply relative inline-block;
+    }
+
+    .dropdown-content {
+        @apply hidden absolute z-30 group-hover:block;
+
+    }
+
+    .dropdown-content a {
+
+        @apply block;
+    }
+
+
+    nav ul li a {
+        @apply pt-[38px] pb-[38px];
+    }
+
+    .border-language {
+
+        @apply p-[2px] from-primary to-third bg-gradient-to-r;
+
+    }
+
+    .cursor-close {
+
+
+        cursor: url('/static/src/img/x.png'), pointer;
+
+
+    }
+
+    .bg-flexbg {
+
+        background-image: url("/static/src/img/truck.png");
+
+    }
+
+    .bg-medium {
+
+        background-image: url("/static/src/img/m-symbol.svg");
+
+
+    }
+
+    .bg-medium:hover{
+
+        background-image: url("/static/src/img/medium-logo.svg");
+    }
+
+    .btn-primary {
+
+        @apply font-bold border-[2px] rounded-lg hover:text-white hover:bg-primary border-third text-secondary bg-[#E7F1FE] xl:pl-[14px] xl:pr-[14px] xl:pb-[18px] xl:pt-[18px] xl:text-[20px] lg:pl-[10px] lg:pr-[10px] lg:pb-[14px] lg:pt-[14px] lg:text-[18px] pl-[8px] pr-[8px] pb-[8px] pt-[8px] text-[16px] hover:-translate-y-2 transition duration-300 cursor-pointer z-10 sticky hover:shadow-2xl hover:shadow-blue-200
+
+    }
+
+
+}

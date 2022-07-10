@@ -1,0 +1,412 @@
+{% extends 'base.html' %}
+{% load static navigation_tags tailwind_tags %}
+
+{% block body_class %}font-Nunito overflow-x-hidden text-txtcolor{% endblock %}
+
+{% block extra_css %}
+
+{% comment %}
+Created by Medium Agency
+{% endcomment %}
+
+{% endblock extra_css %}
+
+{% block content %}
+
+    <div class="container mx-auto">
+        <div class="font-black text-[88px] md:text-[70px] text-[#F6F6F6] text-right mb-[20px] uppercase">{{ self.banner_title }}
+        </div>
+        <div class="inline-flex items-center mt-[-70px]">
+            <div
+                class="flex items-center rounded-full border-[6px] border-primary xl:w-[600px] xl:h-[600px] lg:w-[500px] lg:h-[500px] sm:w-[400px] sm:h-[400px] w-[300px] h-[300px]">
+                <div class="container mx-auto group w-[188px] sm:w-[288px] lg:w-[388px] xl:w-[488px]">
+                    <h2
+                        class="font-extrabold text-[#363434] text-[22px] sm:text-[30px] lg:text-[38px] xl:text-[48px]  wow animate__animated animate__bounceInLeft">
+                        {{ self.banner_title2 }}</h2>
+                    <div
+                        class="sm:grid sm:grid-cols-2 flex flex-col items-start sm:items-center sm:space-y-0 space-y-3">
+                        <div class="inline-flex items-center">
+                            <p
+                                class="font-bold text-[18px] lg:text-[20px] xl:text-[24px] text-txtcolor wow animate__animated animate__bounceInLeft">{{ self.banner_title3 }}</p>
+                        </div>
+                        <div><button class="btn-primary float-right wow animate__animated animate__bounce">Подать
+                                заявку</button></div>
+                    </div>
+                </div>
+                <svg class="xl:w-[627px] xl:h-[627px] lg:w-[527px] lg:h-[527px] sm:w-[427px] sm:h-[427px] w-[307px] h-[307px] top-[244px] sm:top-[250px] lg:top-[130px] animate-spin-slow absolute z-0"
+                    viewBox="0 0 687 686" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M686.5 343C686.5 532.157 532.934 685.5 343.5 685.5C154.066 685.5 0.5 532.157 0.5 343C0.5 153.843 154.066 0.5 343.5 0.5C532.934 0.5 686.5 153.843 686.5 343Z"
+                        stroke="#57555C" />
+                    <circle cx="223.5" cy="21.5" r="19.5" fill="url(#paint0_linear_618_8)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_618_8" x1="204" y1="2" x2="243" y2="41"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3A74C2" />
+                            <stop offset="1" stop-color="#0A428C" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+
+
+            </div>
+            <div class="items-center z-0 hidden md:inline-flex">
+                <img class="absolute right-0 max-w-[300px] lg:max-w-[400px] xl:max-w-[600px]  xxl:max-w-none wow animate__animated animate__bounceInRight"
+                    src="{% static 'src/img/truck.png' %}">
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="container mx-auto sticky z-20">
+
+        <div
+            class="sm:grid sm:grid-cols-2 hidden mx-auto lg:inline-flex justify-between lg:space-x-8 lg:mx-auto lg:float-right float-none lg:mb-0 mb-[-140px]  lg:mt-[-140px] space-y-2">
+            <div
+                class="group mx-auto hover:-translate-y-2 pt-3 transition duration-300 hover:shadow-yellow-200 w-[186px] md:w-[212px] md:h-[276px] h-[256px] bg-white shadow-xl flex flex-col items-center rounded-[25px] border border-[#F1F1F1]">
+                <div
+                    class="inline-flex rounded-full bg-[#FFE8A3] w-[100px] h-[100px] md:w-[120px] md:h-[120px] items-center">
+                    <img class="w-[78px] h-[78px] mx-auto" src="{% static 'src/img/container.svg' %}">
+                </div>
+                <p class="text-[#FF8660] font-extrabold md:text-[22px] text-[20px] mt-[12px] md:mt-[24px]">5000 +
+                </p>
+                <p class="text-[#FFD147] font-extrabold md:text-[22px] text-[20px] mt-[6px]">Контейнеров</p>
+                <p class="text-[#FF8660] font-extrabold md:text-[22px] text-[20px] mt-[6px]">в год</p>
+            </div>
+            <div
+                class="group mx-auto hover:-translate-y-2 pt-3 transition duration-300 hover:shadow-sky-200 w-[186px] md:w-[212px] md:h-[276px] h-[256px] bg-white shadow-xl flex flex-col items-center rounded-[25px] border border-[#F1F1F1]">
+                <div
+                    class="inline-flex rounded-full bg-[#DFEAF5] w-[100px] h-[100px] md:w-[120px] md:h-[120px] items-center">
+                    <img class="w-[78px] h-[78px] mx-auto" src="{% static 'src/img/airplane.svg' %}">
+                </div>
+                <p class="text-[#61A2F9] font-extrabold md:text-[22px] text-[20px] mt-[12px] md:mt-[24px]">3000 +
+                </p>
+                <p class="text-[#DD636E] font-extrabold md:text-[22px] text-[20px] mt-[6px]">Авиаперевозок</p>
+                <p class="text-[#61A2F9] font-extrabold md:text-[22px] text-[20px] mt-[6px]">в год</p>
+            </div>
+            <div
+                class="group mx-auto hover:-translate-y-2 pt-3 transition duration-300 hover:shadow-green-200 w-[186px] md:w-[212px] md:h-[276px] h-[256px] bg-white shadow-xl flex flex-col items-center rounded-[25px] border border-[#F1F1F1]">
+                <div
+                    class="inline-flex rounded-full bg-[#DBEED7] w-[100px] h-[100px] md:w-[120px] md:h-[120px] items-center">
+                    <img class="w-[78px] h-[78px] mx-auto" src="{% static 'src/img/minitruck.svg' %}">
+                </div>
+                <p class="text-[#74C766] font-extrabold md:text-[22px] text-[20px] mt-[12px] md:mt-[24px]">4000 +
+                </p>
+                <p class="text-[#57555C] font-extrabold md:text-[22px] text-[20px] mt-[6px]">Автоперевозок</p>
+                <p class="text-[#74C766] font-extrabold md:text-[22px] text-[20px] mt-[6px]">в год</p>
+            </div>
+            <div
+                class="group mx-auto hover:-translate-y-2 pt-3 transition duration-300 hover:shadow-teal-200 w-[186px] md:w-[212px] md:h-[276px] h-[256px] bg-white shadow-xl flex flex-col items-center rounded-[25px] border border-[#F1F1F1]">
+                <div
+                    class="inline-flex rounded-full bg-[#A8D3D8] w-[100px] h-[100px] md:w-[120px] md:h-[120px] items-center">
+                    <img class="w-[78px] h-[78px] mx-auto" src="{% static 'src/img/minisertificate.svg' %}">
+                </div>
+                <p class="text-[#5F6B75] font-extrabold md:text-[22px] text-[20px] mt-[12px] md:mt-[24px]">15000 +
+                </p>
+                <p class="text-[#A8D3D8] font-extrabold md:text-[22px] text-[20px] mt-[6px]">Деклараций</p>
+                <p class="text-[#5F6B75] font-extrabold md:text-[22px] text-[20px] mt-[6px]">в год</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="z-10 sticky w-full before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-primary">
+        <div class="container mx-auto sm:mt-[-1px] mt-[60px] z-20 sticky">
+            <div class="text-white font-extrabold text-[36px] text-center">
+                <h3 class="sm:pt-[200px] pt-[100px]">Услуги</h3>
+            </div>
+            <img class="mx-auto mt-2" src="{% static 'src/img/symbol.svg' %}">
+            <div
+                class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 xl:grid-cols-3 gap-4 gap-y-16 items-center pt-[90px] pb-[90px]">
+
+                <div
+                    class="wow animate__animated animate__fadeInDown lg:w-[400px] sm:w-[350px] w-[270px] bg-white rounded-[25px] shadow-2xl duration-300 transition hover:-translate-y-2 hover:shadow-amber-800 mx-auto">
+                    <img class="w-[200px] h-[200px] mx-auto" src="{% static 'src/img/railway.svg' %}">
+                    <h3 class="text-txtcolor text-center font-extrabold sm:text-[28px] text-[22px] px-4">Железнодорожные
+                        контейнерные
+                        перевозки</h3>
+                    <div
+                        class="w-full flex items-center bg-[#252525] text-white font-extrabold sm:text-[26px] text-[22px] mx-auto mt-[70px] rounded-b-[25px]">
+                        <div class="inline-flex items-center group mx-auto py-3"> Подробно <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px]" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div
+                    class="wow animate__animated animate__fadeInDown lg:w-[400px] sm:w-[350px] w-[270px] bg-white rounded-[25px] shadow-2xl duration-300 transition hover:-translate-y-2 hover:shadow-amber-800 mx-auto">
+                    <img class="w-[200px] h-[200px] mx-auto" src="{% static 'src/img/railway.svg' %}">
+                    <h3 class="text-txtcolor text-center font-extrabold sm:text-[28px] text-[22px] px-4">Железнодорожные
+                        контейнерные
+                        перевозки</h3>
+                    <div
+                        class="w-full flex items-center bg-[#252525] text-white font-extrabold sm:text-[26px] text-[22px] mx-auto mt-[70px] rounded-b-[25px]">
+                        <div class="inline-flex items-center group mx-auto py-3"> Подробно <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px]" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div
+                    class="wow animate__animated animate__fadeInDown lg:w-[400px] sm:w-[350px] w-[270px] bg-white rounded-[25px] shadow-2xl duration-300 transition hover:-translate-y-2 hover:shadow-amber-800 mx-auto">
+                    <img class="w-[200px] h-[200px] mx-auto" src="{% static 'src/img/railway.svg' %}">
+                    <h3 class="text-txtcolor text-center font-extrabold sm:text-[28px] text-[22px] px-4">Железнодорожные
+                        контейнерные
+                        перевозки</h3>
+                    <div
+                        class="w-full flex items-center bg-[#252525] text-white font-extrabold sm:text-[26px] text-[22px] mx-auto mt-[70px] rounded-b-[25px]">
+                        <div class="inline-flex items-center group mx-auto py-3"> Подробно <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px]" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div
+                    class="wow animate__animated animate__fadeInDown lg:w-[400px] sm:w-[350px] w-[270px] bg-white rounded-[25px] shadow-2xl duration-300 transition hover:-translate-y-2 hover:shadow-amber-800 mx-auto">
+                    <img class="w-[200px] h-[200px] mx-auto" src="{% static 'src/img/railway.svg' %}">
+                    <h3 class="text-txtcolor text-center font-extrabold sm:text-[28px] text-[22px] px-4">Железнодорожные
+                        контейнерные
+                        перевозки</h3>
+                    <div
+                        class="w-full flex items-center bg-[#252525] text-white font-extrabold sm:text-[26px] text-[22px] mx-auto mt-[70px] rounded-b-[25px]">
+                        <div class="inline-flex items-center group mx-auto py-3"> Подробно <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px]" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div
+                    class="wow animate__animated animate__fadeInDown lg:w-[400px] sm:w-[350px] w-[270px] bg-white rounded-[25px] shadow-2xl duration-300 transition hover:-translate-y-2 hover:shadow-amber-800 mx-auto">
+                    <img class="w-[200px] h-[200px] mx-auto" src="{% static 'src/img/railway.svg' %}">
+                    <h3 class="text-txtcolor text-center font-extrabold sm:text-[28px] text-[22px] px-4">Железнодорожные
+                        контейнерные
+                        перевозки</h3>
+                    <div
+                        class="w-full flex items-center bg-[#252525] text-white font-extrabold sm:text-[26px] text-[22px] mx-auto mt-[70px] rounded-b-[25px]">
+                        <div class="inline-flex items-center group mx-auto py-3"> Подробно <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px]" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div
+                    class="wow animate__animated animate__fadeInDown lg:w-[400px] sm:w-[350px] w-[270px] bg-white rounded-[25px] shadow-2xl duration-300 transition hover:-translate-y-2 hover:shadow-amber-800 mx-auto">
+                    <img class="w-[200px] h-[200px] mx-auto" src="{% static 'src/img/railway.svg' %}">
+                    <h3 class="text-txtcolor text-center font-extrabold sm:text-[28px] text-[22px] px-4">Железнодорожные
+                        контейнерные
+                        перевозки</h3>
+                    <div
+                        class="w-full flex items-center bg-[#252525] text-white font-extrabold sm:text-[26px] text-[22px] mx-auto mt-[70px] rounded-b-[25px]">
+                        <div class="inline-flex items-center group mx-auto py-3"> Подробно <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px]" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div
+                    class="wow animate__animated animate__fadeInDown lg:w-[400px] sm:w-[350px] w-[270px] bg-white rounded-[25px] shadow-2xl duration-300 transition hover:-translate-y-2 hover:shadow-amber-800 mx-auto">
+                    <img class="w-[200px] h-[200px] mx-auto" src="{% static 'src/img/railway.svg' %}">
+                    <h3 class="text-txtcolor text-center font-extrabold sm:text-[28px] text-[22px] px-4">Железнодорожные
+                        контейнерные
+                        перевозки</h3>
+                    <div
+                        class="w-full flex items-center bg-[#252525] text-white font-extrabold sm:text-[26px] text-[22px] mx-auto mt-[70px] rounded-b-[25px]">
+                        <div class="inline-flex items-center group mx-auto py-3"> Подробно <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px]" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div
+                    class="wow animate__animated animate__fadeInDown lg:w-[400px] sm:w-[350px] w-[270px] bg-white rounded-[25px] shadow-2xl duration-300 transition hover:-translate-y-2 hover:shadow-amber-800 mx-auto">
+                    <img class="w-[200px] h-[200px] mx-auto" src="{% static 'src/img/railway.svg' %}">
+                    <h3 class="text-txtcolor text-center font-extrabold sm:text-[28px] text-[22px] px-4">Железнодорожные
+                        контейнерные
+                        перевозки</h3>
+                    <div
+                        class="w-full flex items-center bg-[#252525] text-white font-extrabold sm:text-[26px] text-[22px] mx-auto mt-[70px] rounded-b-[25px]">
+                        <div class="inline-flex items-center group mx-auto py-3"> Подробно <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px]" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div
+                    class="wow animate__animated animate__fadeInDown lg:w-[400px] sm:w-[350px] w-[270px] bg-white rounded-[25px] shadow-2xl duration-300 transition hover:-translate-y-2 hover:shadow-amber-800 mx-auto">
+                    <img class="w-[200px] h-[200px] mx-auto" src="{% static 'src/img/railway.svg' %}">
+                    <h3 class="text-txtcolor text-center font-extrabold sm:text-[28px] text-[22px] px-4">Железнодорожные
+                        контейнерные
+                        перевозки</h3>
+                    <div
+                        class="w-full flex items-center bg-[#252525] text-white font-extrabold sm:text-[26px] text-[22px] mx-auto mt-[70px] rounded-b-[25px]">
+                        <div class="inline-flex items-center group mx-auto py-3"> Подробно <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px]" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="bg-about bg-fixed mt-[-80px] z-10">
+        <div class="backdrop-opacity-10 backdrop-invert bg-black/50">
+            <div class="container mx-auto ">
+                <div class="text-white font-extrabold text-[36px] text-center">
+                    <h3 class="pt-[190px]">О нас</h3>
+                </div>
+                <img class="mx-auto mt-2" src="{% static 'src/img/symbol.svg' %}">
+                <p
+                    class="text-white font-semibold text-[22px] md:text-[28px] mt-[60px] pb-[220px] px-2 wow animate__animated animate__flipInX">
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                    classical
+                    Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+                    Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from
+                    a
+                    Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
+                    undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+                    Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the
+                    theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum
+                    dolor
+                    sit amet..", comes from a line in section 1.10.32.
+
+                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+                    Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in
+                    their
+                    exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div
+        class="before:block before:absolute before:-inset-1 before:skew-y-3 before:bg-[#313131] sticky z-10 mt-[-60px] pb-[120px] mb-[120px]">
+        <div class="container mx-auto sticky z-20">
+
+
+            <div class="text-white font-extrabold text-[36px] text-center">
+                <h3 class="pt-[90px]">Наша команда</h3>
+            </div>
+            <img class="mx-auto mt-2" src="{% static 'src/img/symbol.svg' %}">
+            <svg class="md:w-[180px] md:h-[103px] w-[80px] h-auto" viewBox="0 0 180 103" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.79699 102.857V85.2632M17.594 94.0602H0H17.594Z" stroke="white" stroke-miterlimit="10" />
+                <path d="M8.79699 59.5488V41.9548M17.594 50.7518H0H17.594Z" stroke="white" stroke-miterlimit="10" />
+                <path d="M8.79699 17.594V0M17.594 8.79699H0H17.594Z" stroke="white" stroke-miterlimit="10" />
+                <path d="M8.79699 102.857V85.2632M17.594 94.0602H0H17.594Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M8.79699 59.5488V41.9548M17.594 50.7518H0H17.594Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M8.79699 17.594V0M17.594 8.79699H0H17.594Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M49.3986 102.857V85.2632M58.1955 94.0602H40.6016H58.1955Z" stroke="white"
+                    stroke-miterlimit="10" />
+                <path d="M49.3986 59.5488V41.9548M58.1955 50.7518H40.6016H58.1955Z" stroke="white"
+                    stroke-miterlimit="10" />
+                <path d="M49.3986 17.594V0M58.1955 8.79699H40.6016H58.1955Z" stroke="white" stroke-miterlimit="10" />
+                <path d="M49.3986 102.857V85.2632M58.1955 94.0602H40.6016H58.1955Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M49.3986 59.5488V41.9548M58.1955 50.7518H40.6016H58.1955Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M49.3986 17.594V0M58.1955 8.79699H40.6016H58.1955Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M89.9999 59.5488V41.9548M98.7969 50.7518H81.2029H98.7969Z" stroke="white"
+                    stroke-miterlimit="10" />
+                <path d="M89.9999 17.594V0M98.7969 8.79699H81.2029H98.7969Z" stroke="white" stroke-miterlimit="10" />
+                <path d="M89.9999 59.5488V41.9548M98.7969 50.7518H81.2029H98.7969Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M89.9999 17.594V0M98.7969 8.79699H81.2029H98.7969Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M130.601 59.5488V41.9548M139.398 50.7518H121.804H139.398Z" stroke="white"
+                    stroke-miterlimit="10" />
+                <path d="M130.601 17.594V0M139.398 8.79699H121.804H139.398Z" stroke="white" stroke-miterlimit="10" />
+                <path d="M130.601 59.5488V41.9548M139.398 50.7518H121.804H139.398Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M130.601 17.594V0M139.398 8.79699H121.804H139.398Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M171.203 59.5488V41.9548M180 50.7518H162.406H180Z" stroke="white" stroke-miterlimit="10" />
+                <path d="M171.203 17.594V0M180 8.79699H162.406H180Z" stroke="white" stroke-miterlimit="10" />
+                <path d="M171.203 59.5488V41.9548M180 50.7518H162.406H180Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+                <path d="M171.203 17.594V0M180 8.79699H162.406H180Z" stroke="white" stroke-width="2"
+                    stroke-miterlimit="10" />
+            </svg>
+            <div class="team wow animate__animated animate__rotateIn">
+                <div class="swiper mySwiper flex flex-col">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="img img-1"></div>
+                            <div class="name">Abolfazl Najafi</div>
+                            <div class="title">Full Stack Web Developer</div>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="img img-2"></div>
+                            <div class="name">Parastoo Bahmani</div>
+                            <div class="title">Video Editor</div>
+
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="img img-3"></div>
+                            <div class="name">Danial Fayazi</div>
+                            <div class="title">Seo Specialist</div>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="img img-4"></div>
+                            <div class="name">Negar Taheri</div>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="img img-5"></div>
+                            <div class="name">Amir Shafie</div>
+                            <div class="title">Real State Agent</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
